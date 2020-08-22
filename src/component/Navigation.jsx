@@ -15,11 +15,27 @@ const Navigation = () => {
         alt=""
       />
       {user ? (
-        <Button onClick={authSingOut}>logout</Button>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "20%",
+          }}
+        >
+          <a href="#upload">UPLOAD</a>
+          <Button onClick={authSingOut} color="secondary">
+            logout
+          </Button>
+        </div>
       ) : (
         <div>
           <Button onClick={() => setSignupOpen(true)}>SignUp</Button>
-          <Button onClick={() => setLoginOpen(true)} color="secondary">
+          <Button
+            onClick={() => setLoginOpen(true)}
+            color="primary"
+            variant="outlined"
+          >
             Login
           </Button>
         </div>

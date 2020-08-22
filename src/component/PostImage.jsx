@@ -60,7 +60,7 @@ const PostImage = () => {
   };
 
   return (
-    <div className="postImage">
+    <div className="postImage" id="upload">
       <div className="innerContainer">
         <Progress
           strokeColor={{

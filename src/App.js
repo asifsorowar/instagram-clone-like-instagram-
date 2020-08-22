@@ -41,48 +41,64 @@ function App() {
     };
   }, [posts, user, unsubscribe]);
 
-  return (
-    <AuthContext.Provider value={{ user }}>
-      <ModalContext.Provider
-        value={{ signupOpen, setSignupOpen, loginOpen, setLoginOpen }}
-      >
-        <div className="App">
-          <SignUpModal />
-          <LoginModal />
-          <Navigation />
+  const handleScrollToTop = (e) => {
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
-          <div className="posts">
-            <div className="app__postsLeft">
-              {posts.map((post) => (
-                <Post
-                  key={post.id}
-                  postId={post.id}
-                  username={post.username}
-                  userAvatar={post.userAvatar}
-                  imageUrl={post.imageUrl}
-                  caption={post.caption}
+  return (
+    <>
+      <div
+        className="scrollToTop"
+        style={window.pageYOffset > 200 ? { opacity: 1 } : {}}
+        onClick={handleScrollToTop}
+      >
+        TOP
+      </div>
+      <AuthContext.Provider value={{ user }}>
+        <ModalContext.Provider
+          value={{ signupOpen, setSignupOpen, loginOpen, setLoginOpen }}
+        >
+          <div className="App">
+            <SignUpModal />
+            <LoginModal />
+            <Navigation />
+
+            <div className="posts">
+              <div className="app__postsLeft">
+                {posts.map((post) => (
+                  <Post
+                    key={post.id}
+                    postId={post.id}
+                    username={post.username}
+                    userAvatar={post.userAvatar}
+                    imageUrl={post.imageUrl}
+                    caption={post.caption}
+                  />
+                ))}
+              </div>
+              <div className="app_postsRight">
+                <InstagramEmbed
+                  url="https://instagr.am/p/Zw9o4/"
+                  maxWidth={320}
+                  hideCaption={false}
+                  containerTagName="div"
+                  protocol=""
+                  injectScript
+                  onLoading={() => {}}
+                  onSuccess={() => {}}
+                  onAfterRender={() => {}}
+                  onFailure={() => {}}
                 />
-              ))}
+              </div>
             </div>
-            <div className="app_postsRight">
-              <InstagramEmbed
-                url="https://instagr.am/p/Zw9o4/"
-                maxWidth={320}
-                hideCaption={false}
-                containerTagName="div"
-                protocol=""
-                injectScript
-                onLoading={() => {}}
-                onSuccess={() => {}}
-                onAfterRender={() => {}}
-                onFailure={() => {}}
-              />
-            </div>
+            {user && <PostImage />}
           </div>
-          {user && <PostImage />}
-        </div>
-      </ModalContext.Provider>
-    </AuthContext.Provider>
+        </ModalContext.Provider>
+      </AuthContext.Provider>
+    </>
   );
 }
 

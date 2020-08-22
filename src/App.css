@@ -41,3 +41,21 @@
 .app_postsRight {
   margin-left: 20px;
 }
+
+.scrollToTop {
+  position: fixed;
+  bottom: 10%;
+  right: 1%;
+  background-color: gray;
+  padding: 10px;
+  opacity: 0;
+  border-radius: 50%;
+  transition: all 0.4s;
+  pointer-events: auto;
+  color: white;
+  cursor: pointer;
+}
+
+.scrollToTop::after {
+  opacity: 1;
+}
