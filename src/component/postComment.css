@@ -1,0 +1,13 @@
+.commentBox {
+  width: 100%;
+}
+
+.comment__form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.commentInput {
+  width: 100%;
+}

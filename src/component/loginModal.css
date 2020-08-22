@@ -1,0 +1,9 @@
+.login__form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.submitButton {
+  margin-top: 20px !important;
+}
